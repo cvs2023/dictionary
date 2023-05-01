@@ -1,25 +1,81 @@
-import logo from './logo.svg';
-import './App.css';
+import axios from "axios";
+import { useEffect, useState } from "react";
+import List from "./pages/list";
+import "./App.css";
 
-function App() {
+//get css from description
+//install axios
+
+export default function App() {
+  const [keyWord, setKeyWord] = useState("");
+  const [result, setResult] = useState(null);
+  const api = "https://api.dictionaryapi.dev/api/v2/entries/en";
+
+  async function handleSearch(e) {
+    try {
+      const res = await axios.get(`${api}/${keyWord}`);
+      setResult(res.data[0]);
+    } catch (e) {
+      console.log({ e });
+    }
+  }
+
+  function handleOnSelection() {
+    const selection = window.getSelection().toString();
+    setKeyWord(selection);
+    handleSearch();
+  }
+
+  function something(e) {
+    if (e.keyCode === 13) {
+      handleSearch();
+    }
+  }
+
+  function handleClear() {
+    setKeyWord("");
+    setResult(null);
+  }
+  useEffect(() => {
+    if (keyWord) {
+      handleSearch();
+    }
+    if (keyWord.length == 0) {
+      handleClear();
+    }
+  }, [keyWord]);
+  // useEffect(() => {
+  //   console.log("useffect chla");
+  //   handleOnSelection();
+  // }, [result]);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {/* <div onMouseUp={handleOnSelection}> loves me respect hello hi</div> */}
+
+      <div className="main-header">
+        <input
+          className="input-tag"
+          value={keyWord}
+          autoFocus
+          placeholder="Type the word here"
+          onKeyDown={(e) => something(e)}
+          onChange={(e) => setKeyWord(e.target.value)}
+        />
+        <button className="button" type="submit" onClick={handleSearch}>
+          Search
+        </button>
+      </div>
+
+      {/* <button
+        // disabled={result}
+        className="button"
+        type="submit"
+        onClick={handleClear}
+      >
+        Clear
+      </button> */}
+      {result && <List {...{ result }} />}
     </div>
   );
 }
-
-export default App;
