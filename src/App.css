@@ -13,16 +13,17 @@ body {
 }
 .main-header {
   display: flex;
-  justify-content: center;
+  justify-content: start;
   align-items: center;
-  padding: 40px 40px;
+  padding: 65px;
+  padding-bottom: 23px;
 }
 .input-tag {
   border: none;
   border-bottom: 1px solid green;
   margin-right: 1rem;
   outline: none;
-  padding: 10px;
+  padding: 6px;
 }
 .button {
   padding: 10px;
@@ -40,8 +41,6 @@ body {
 }
 .word {
   display: flex;
-
-  /* justify-content: center; */
   align-items: center;
 }
 .pad {
@@ -53,42 +52,11 @@ body {
 }
 .synonyms {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
 }
 .items {
+  padding: 0.4rem;
   display: flex;
-}
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+  justify-content: baseline;
+  flex-wrap: wrap;
 }

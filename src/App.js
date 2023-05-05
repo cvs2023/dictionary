@@ -44,15 +44,9 @@ export default function App() {
       handleClear();
     }
   }, [keyWord]);
-  // useEffect(() => {
-  //   console.log("useffect chla");
-  //   handleOnSelection();
-  // }, [result]);
 
   return (
     <div className="App">
-      {/* <div onMouseUp={handleOnSelection}> loves me respect hello hi</div> */}
-
       <div className="main-header">
         <input
           className="input-tag"

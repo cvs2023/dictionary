@@ -23,7 +23,8 @@ const List = ({ result }) => {
           <div className="pad">
             <button className="audio" onClick={playAudio}>
               {" "}
-              Play audio{" "}
+              <i class="fa fa-volume-up" aria-hidden="true"></i>
+              Sample audio{" "}
             </button>
           </div>
         </div>
