@@ -19,11 +19,11 @@ const List = ({ result }) => {
           <p>{word}</p>
 
           <p className="pad"> {meanings[0].partOfSpeech} </p>
-          <p className="pad"> {phonetics.length != 0 && phonetics[0].text}</p>
+          <p className="pad"> {phonetics.length !== 0 && phonetics[0].text}</p>
           <div className="pad">
             <button className="audio" onClick={playAudio}>
               {" "}
-              <i class="fa fa-volume-up" aria-hidden="true"></i>
+              <i className="fa fa-volume-up" aria-hidden="true"></i>
               Sample audio{" "}
             </button>
           </div>
